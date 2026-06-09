@@ -10,7 +10,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 BASE_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = Path(os.getenv("CONFIG_PATH", BASE_DIR / "config.json"))
-DB_PATH = Path(os.getenv("DB_PATH", "data/bot.db"))
+DB_PATH = Path(os.getenv("DB_PATH", "/data/bot.db"))
 
 
 def load_config() -> dict:
