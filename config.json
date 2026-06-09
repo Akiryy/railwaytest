@@ -1,0 +1,30 @@
+{
+  "default_interval_minutes": 2,
+  "default_enabled": true,
+  "default_threshold": 10,
+  "keywords": {
+    "telegram": 5,
+    "bot": 4,
+    "python": 5,
+    "aiogram": 6,
+    "parser": 4,
+    "parsing": 4,
+    "scraping": 4,
+    "selenium": 3,
+    "automation": 4
+  },
+  "test_orders": [
+    {
+      "title": "Нужен Telegram bot на Python",
+      "description": "Сделать уведомления, SQLite и парсер заказов",
+      "price": "5000 ₽",
+      "url": "https://kwork.ru/projects"
+    },
+    {
+      "title": "Дизайн баннера",
+      "description": "Нужно нарисовать баннер для сайта",
+      "price": "1000 ₽",
+      "url": "https://kwork.ru/projects"
+    }
+  ]
+}
