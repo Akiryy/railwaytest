@@ -269,6 +269,20 @@ async def reset_seen(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     await update.message.reply_text("✅ Список просмотренных тестовых заказов очищен.")
 
 
+async def dbtest(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    with get_connection() as conn:
+        settings_count = conn.execute("SELECT COUNT(*) FROM settings").fetchone()[0]
+        seen_count = conn.execute("SELECT COUNT(*) FROM seen_orders").fetchone()[0]
+
+    await update.message.reply_text(
+        "🧪 SQLite test\n\n"
+        f"DB_PATH: {DB_PATH}\n"
+        f"DB exists: {DB_PATH.exists()}\n"
+        f"Settings rows: {settings_count}\n"
+        f"Seen orders rows: {seen_count}"
+    )
+
+
 def main() -> None:
     token = os.getenv("BOT_TOKEN")
     if not token:
@@ -286,6 +300,7 @@ def main() -> None:
     application.add_handler(CommandHandler("on", turn_on))
     application.add_handler(CommandHandler("off", turn_off))
     application.add_handler(CommandHandler("reset_seen", reset_seen))
+    application.add_handler(CommandHandler("dbtest", dbtest))
 
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
